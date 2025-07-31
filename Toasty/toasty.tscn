@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://dwswaaopggu0m"]
+
+[ext_resource type="Script" uid="uid://clnftrqni3wee" path="res://Toasty/toasty.gd" id="1_c03vw"]
+[ext_resource type="Texture2D" uid="uid://b6r4pu58txcx5" path="res://Assets/Toasty/fall.png" id="1_ijabu"]
+[ext_resource type="Texture2D" uid="uid://3k4pb42hq25v" path="res://Assets/Toasty/jump.png" id="2_c03vw"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1i5y6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ijabu")
+}],
+"loop": true,
+"name": &"fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_c03vw")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_51o33"]
+size = Vector2(17, 15)
+
+[node name="Toasty" type="CharacterBody2D"]
+scale = Vector2(2.285, 2.285)
+script = ExtResource("1_c03vw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_1i5y6")
+animation = &"jump"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 4.5)
+shape = SubResource("RectangleShape2D_51o33")

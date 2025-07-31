@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Collectible" load_steps=3 format=3 uid="uid://dvcoivey7110i"]
+
+[ext_resource type="Script" uid="uid://c3sv547mx6e65" path="res://Resources/collectible.gd" id="1_v1omo"]
+[ext_resource type="Texture2D" uid="uid://dby6u6tjoyde5" path="res://Assets/Collectibles/strawberry.png" id="2_0b5gx"]
+
+[resource]
+script = ExtResource("1_v1omo")
+name = "Strawberry"
+value = 50
+texture = ExtResource("2_0b5gx")
+particle_color = Color(0.926895, 0.492743, 0.16635, 1)
+scale = 1.895
+animation_speed = 1.0
+gives_speed_boost = false
+gives_extra_jump = false
+boost_duration = 2.0
+metadata/_custom_type_script = "uid://c3sv547mx6e65"

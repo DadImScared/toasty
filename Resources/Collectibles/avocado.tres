@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Collectible" load_steps=3 format=3 uid="uid://b0mvkwieg2fb7"]
+
+[ext_resource type="Script" uid="uid://c3sv547mx6e65" path="res://Resources/collectible.gd" id="1_kpy7h"]
+[ext_resource type="Texture2D" uid="uid://opq67k0elks" path="res://Assets/Collectibles/avacado.png" id="2_yht06"]
+
+[resource]
+script = ExtResource("1_kpy7h")
+name = "Avocado"
+value = 25
+texture = ExtResource("2_yht06")
+particle_color = Color(0.578195, 0.578195, 0, 1)
+scale = 1.895
+animation_speed = 1.0
+gives_speed_boost = false
+gives_extra_jump = false
+boost_duration = 2.0
+metadata/_custom_type_script = "uid://c3sv547mx6e65"

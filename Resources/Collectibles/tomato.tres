@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Collectible" load_steps=3 format=3 uid="uid://dt6t0ke01lcud"]
+
+[ext_resource type="Script" uid="uid://c3sv547mx6e65" path="res://Resources/collectible.gd" id="1_ksgjl"]
+[ext_resource type="Texture2D" uid="uid://b3yd5dfpchwpy" path="res://Assets/Collectibles/tomato.png" id="2_5yx1b"]
+
+[resource]
+script = ExtResource("1_ksgjl")
+name = "Tomato"
+value = 30
+texture = ExtResource("2_5yx1b")
+particle_color = Color(0.754333, 0.318624, 0.311019, 1)
+scale = 1.0
+animation_speed = 1.0
+gives_speed_boost = false
+gives_extra_jump = false
+boost_duration = 2.0
+metadata/_custom_type_script = "uid://c3sv547mx6e65"

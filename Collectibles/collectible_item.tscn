@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxgc4jp5e5c4"]
+
+[ext_resource type="Script" uid="uid://cpfj0h3jada52" path="res://Collectibles/collectible_item.gd" id="1_q8rdp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ht2m8"]
+radius = 11.0454
+
+[node name="CollectibleItem" type="Area2D"]
+z_index = 135
+script = ExtResource("1_q8rdp")
+
+[node name="AnimatedSprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1, 2)
+scale = Vector2(0.923077, 0.857143)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ht2m8")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
