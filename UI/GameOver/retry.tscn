@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://qvt1i2m478qr"]
+
+[ext_resource type="Texture2D" uid="uid://eagy7ehcm136" path="res://Assets/UI/PremadeButtons_Replay.png" id="1_jbqmg"]
+
+[node name="TextureButton" type="TextureButton"]
+clip_contents = true
+custom_minimum_size = Vector2(20, 20)
+offset_right = 69.0
+offset_bottom = 20.0
+texture_normal = ExtResource("1_jbqmg")
+ignore_texture_size = true
+stretch_mode = 0

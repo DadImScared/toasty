@@ -1,0 +1,136 @@
+[gd_scene load_steps=7 format=3 uid="uid://c3ermd7iboiyf"]
+
+[ext_resource type="Script" uid="uid://ble5eoy02jl7" path="res://UI/GameOver/game_over_ui.gd" id="1_1vraq"]
+[ext_resource type="Texture2D" uid="uid://dt0ftungdt4lw" path="res://Assets/UI/Box_Blue_Square.png" id="1_qvam1"]
+[ext_resource type="Texture2D" uid="uid://pn4xaoxkptkh" path="res://Assets/UI/Banner_Orange.png" id="2_c7q3s"]
+[ext_resource type="FontFile" uid="uid://sbiyl4bgcu66" path="res://Assets/fonts/Fredoka-VariableFont_wdth,wght.ttf" id="3_dy3v5"]
+[ext_resource type="PackedScene" uid="uid://qvt1i2m478qr" path="res://UI/GameOver/retry.tscn" id="3_tl5d4"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c7q3s"]
+texture = ExtResource("1_qvam1")
+
+[node name="GameOverUI" type="Control"]
+visibility_layer = 3
+z_index = 320
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_1vraq")
+
+[node name="Panel" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -199.0
+offset_top = -151.5
+offset_right = 199.0
+offset_bottom = 151.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_c7q3s")
+
+[node name="Control" type="Control" parent="Panel"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="Panel/Control"]
+position = Vector2(106, -2)
+scale = Vector2(0.105, 0.105)
+texture = ExtResource("2_c7q3s")
+
+[node name="GameOverTitle" type="Label" parent="Panel/Control"]
+layout_mode = 2
+anchor_right = 0.102
+offset_left = 42.0
+offset_top = -9.0
+offset_right = 118.0
+offset_bottom = 14.0
+rotation = -0.174533
+theme_override_colors/font_shadow_color = Color(0.355314, 0.355314, 0.355314, 1)
+theme_override_colors/font_outline_color = Color(0.662443, 0.506181, 0.959138, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_dy3v5")
+text = "Game "
+horizontal_alignment = 1
+
+[node name="GameOverTitle2" type="Label" parent="Panel/Control"]
+layout_mode = 2
+anchor_right = 0.102
+offset_left = 94.0
+offset_top = -19.0
+offset_right = 169.764
+offset_bottom = 4.0
+rotation = 0.0942478
+theme_override_colors/font_shadow_color = Color(1.92523e-07, 0.817097, 0.99488, 1)
+theme_override_colors/font_outline_color = Color(0.785128, 0.518202, 0.767598, 1)
+theme_override_fonts/font = ExtResource("3_dy3v5")
+theme_override_font_sizes/font_size = 16
+text = "Over"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="NewRecord" type="Label" parent="Panel/VBoxContainer"]
+visible = false
+layout_mode = 2
+text = "New Record!"
+
+[node name="HighScore" type="Label" parent="Panel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_dy3v5")
+theme_override_font_sizes/font_size = 21
+text = "High Score: 0"
+horizontal_alignment = 1
+
+[node name="FinalScore" type="Label" parent="Panel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_dy3v5")
+theme_override_font_sizes/font_size = 21
+text = "Final Score: 0"
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 22.36)
+layout_mode = 2
+
+[node name="CollectiblesContainer" type="GridContainer" parent="Panel/VBoxContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+theme_override_constants/h_separation = 15
+theme_override_constants/v_separation = 15
+columns = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Retry2" parent="Panel/VBoxContainer/HBoxContainer" instance=ExtResource("3_tl5d4")]
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Retry" type="Button" parent="Panel/VBoxContainer/HBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Retry
+"
+
+[node name="Button" type="Button" parent="Panel/VBoxContainer/HBoxContainer"]
+visible = false
+layout_mode = 2
