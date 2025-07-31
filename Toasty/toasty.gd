@@ -8,12 +8,14 @@ extends CharacterBody2D
 @onready var animated_sprite = $AnimatedSprite2D
 
 func _physics_process(delta):
+	# Don't process input if the mouse is over UI
+	if get_viewport().gui_get_hovered_control() == null:
+		if Input.is_action_just_pressed("jump"):
+			velocity.y = jump_force
+
 	velocity.y += gravity * delta
 	velocity.y *= air_resistance
 	velocity.y = min(velocity.y, max_fall_speed)
-
-	if Input.is_action_just_pressed("jump"):
-		velocity.y = jump_force
 
 	move_and_slide()
 	update_animation()

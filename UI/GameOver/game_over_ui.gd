@@ -9,6 +9,10 @@ extends Control
 @onready var game_title = $Panel/Control/GameOverTitle
 @onready var over_title = $Panel/Control/GameOverTitle2
 
+var auto_restart_timer: float = 3.0
+var countdown_label: Label
+var is_auto_restarting: bool = false
+
 func _ready():
 	# Setup for proper layering and input
 	z_index = 1000
@@ -39,6 +43,9 @@ func show_game_over_screen(score: int, is_new_high_score: bool, collectible_stat
 	# Show collectible stats
 	setup_collectible_display(collectible_stats)
 
+	# Add countdown label
+	create_countdown_label()
+
 	# Make visible
 	visible = true
 	modulate = Color.WHITE
@@ -46,6 +53,38 @@ func show_game_over_screen(score: int, is_new_high_score: bool, collectible_stat
 
 	# Start neon effect
 	call_deferred("start_neon_effect")
+
+	# Start auto-restart countdown
+	is_auto_restarting = true
+	auto_restart_timer = 3.0
+	start_auto_restart_countdown()
+
+func create_countdown_label():
+	"""Create countdown display"""
+	countdown_label = Label.new()
+	#countdown_label.text = "Auto-restart in 3..."
+	countdown_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	countdown_label.add_theme_font_size_override("font_size", 18)
+	countdown_label.add_theme_color_override("font_color", Color(0.8, 0.8, 0.8, 1))
+
+	# Add to the UI (after collectibles container)
+	var vbox = collectibles_container.get_parent()
+	vbox.add_child(countdown_label)
+	vbox.move_child(countdown_label, vbox.get_child_count() - 2)  # Before retry button
+
+func start_auto_restart_countdown():
+	"""Start the 3-second countdown"""
+	while auto_restart_timer > 0 and is_auto_restarting:
+		#if countdown_label:
+			#countdown_label.text = "Auto-restart in " + str(ceil(auto_restart_timer)) + "..."
+
+		await get_tree().create_timer(0.1).timeout
+		auto_restart_timer -= 0.1
+
+	# Auto-restart if not manually interrupted
+	if is_auto_restarting:
+		print("⏰ AUTO-RESTART TRIGGERED!")
+		#restart_game()
 
 func setup_collectible_display(stats: Dictionary):
 	"""Setup collectible icons and counts"""
@@ -61,7 +100,7 @@ func setup_collectible_display(stats: Dictionary):
 		return
 
 	# Set grid columns
-	collectibles_container.columns = 2
+	collectibles_container.columns = 6
 
 	# Add each collectible
 	for item_name in stats:
@@ -149,6 +188,21 @@ func _gui_input(event):
 		restart_game()
 
 func _input(event):
-	"""Handle mobile touch - tap anywhere to restart"""
-	if visible and event is InputEventScreenTouch and event.pressed:
+	"""Handle input - spacebar, mobile touch, or any key to restart"""
+	if not visible:
+		return
+
+	# Spacebar to restart
+	if event.is_action_pressed("ui_accept") or event.is_action_pressed("jump"):
+		restart_game()
+		return
+
+	# Any key to restart (for convenience)
+	if event is InputEventKey and event.pressed:
+		print("🎮 Key pressed: ", event.keycode, " - Restarting!")
+		restart_game()
+		return
+
+	# Mobile touch to restart
+	if event is InputEventScreenTouch and event.pressed:
 		restart_game()

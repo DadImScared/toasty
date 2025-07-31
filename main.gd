@@ -6,10 +6,10 @@ extends Node2D
 @onready var ui = $UI
 
 # Spawning variables
-@export var collectible_spawn_rate = 2.0  # seconds between collectible spawns
-@export var knife_spawn_rate = 4.0  # seconds between knife spawns (start easier)
-@export var scroll_speed = 100  # Should match your background scroll speed
-@export var knife_speed_multiplier = 1.5  # Knives move 50% faster
+@export var collectible_spawn_rate = 1.0  # seconds between collectible spawns
+@export var knife_spawn_rate = 1.0  # seconds between knife spawns (start easier)
+@export var scroll_speed = 150  # Should match your background scroll speed
+@export var knife_speed_multiplier = 1.4  # Knives move 50% faster
 
 # Track world position (since background scrolls)
 var world_distance = 0.0
@@ -131,3 +131,7 @@ func _on_retry_pressed():
 	"""Handle retry button - GameOverUI will be cleaned up automatically when scene reloads"""
 	print("Retry pressed - restarting game")
 	# GameManager.restart_game() will reload the scene, cleaning up the GameOverUI
+
+
+func _on_pause_pressed() -> void:
+	get_tree().paused = !get_tree().paused
