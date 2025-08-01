@@ -1,10 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://ild26gk6jakr"]
+[gd_scene load_steps=7 format=3 uid="uid://ild26gk6jakr"]
 
 [ext_resource type="Texture2D" uid="uid://dn1o1asep8uim" path="res://Assets/Backgrounds/Level1/toasy background 2.2.png" id="1_0xm2m"]
 [ext_resource type="Script" uid="uid://jo26thdef4lk" path="res://main.gd" id="1_h2yge"]
 [ext_resource type="PackedScene" uid="uid://dwswaaopggu0m" path="res://Toasty/toasty.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://fyqal2wqh568" path="res://UI/ScoreBoard/score_board.tscn" id="4_1bvp3"]
 [ext_resource type="Texture2D" uid="uid://cuvkebl5d2f0l" path="res://Assets/UI/Icon_Small_Blank_Pause.png" id="5_lquwl"]
+
+[sub_resource type="Curve2D" id="Curve2D_7mycd"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1171, 13, 0, 0, 0, 0, 1172, 609, 0, 0, 0, 0, 1172, 13)
+}
+point_count = 3
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_h2yge")
@@ -16,11 +22,11 @@ autoscroll = Vector2(-55, 0)
 repeat_times = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D"]
-position = Vector2(1720.5, 137)
+position = Vector2(1867, 326)
 texture = ExtResource("1_0xm2m")
 
 [node name="Toasty" parent="." instance=ExtResource("1_ig7tw")]
-position = Vector2(-361, 87)
+position = Vector2(89, 225)
 motion_mode = 1
 
 [node name="UI" type="CanvasLayer" parent="."]
@@ -43,5 +49,9 @@ mouse_default_cursor_shape = 2
 icon = ExtResource("5_lquwl")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(574, 322)
+
+[node name="SpawnPath2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_7mycd")
 
 [connection signal="pressed" from="UI/Pause" to="." method="_on_pause_pressed"]

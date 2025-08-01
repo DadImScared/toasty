@@ -1,15 +1,30 @@
-[gd_scene load_steps=3 format=3 uid="uid://cxgc4jp5e5c4"]
+[gd_scene load_steps=6 format=3 uid="uid://cxgc4jp5e5c4"]
 
 [ext_resource type="Script" uid="uid://cpfj0h3jada52" path="res://Collectibles/collectible_item.gd" id="1_q8rdp"]
+[ext_resource type="Shader" uid="uid://6uic4dg647im" path="res://Collectibles/collectible_item.gdshader" id="2_ht2m8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6n32a"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uesev"]
+shader = ExtResource("2_ht2m8")
+shader_parameter/outline_width = 1.5
+shader_parameter/outline_color = Color(1, 1, 0, 0.8)
+shader_parameter/glow_intensity = 0.8
+shader_parameter/shimmer_speed = 2.0
+shader_parameter/shimmer_strength = 0.4
+shader_parameter/enable_shimmer = true
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ht2m8"]
 radius = 11.0454
 
 [node name="CollectibleItem" type="Area2D"]
 z_index = 135
+material = SubResource("ShaderMaterial_6n32a")
 script = ExtResource("1_q8rdp")
 
 [node name="AnimatedSprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+material = SubResource("ShaderMaterial_uesev")
 position = Vector2(-1, 2)
 scale = Vector2(0.923077, 0.857143)
 

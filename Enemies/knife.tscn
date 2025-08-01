@@ -1,19 +1,22 @@
 [gd_scene load_steps=4 format=3 uid="uid://bl4u7726qx7ty"]
 
-[ext_resource type="Texture2D" uid="uid://efnn8e7hk8h7" path="res://Assets/Enemies/knife.png" id="1_p1kkb"]
 [ext_resource type="Script" uid="uid://b76dtcgobcwyw" path="res://Enemies/knife.gd" id="1_rxf4j"]
+[ext_resource type="Texture2D" uid="uid://3dnnyskn4d5y" path="res://Assets/Enemies/knife (2).png" id="2_rxf4j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rxf4j"]
-size = Vector2(7, 35)
+size = Vector2(6.08, 15.5183)
 
 [node name="Knife" type="Area2D"]
 rotation = -1.57122
-scale = Vector2(1.16, 1.16)
+scale = Vector2(2.07, 2.07)
 script = ExtResource("1_rxf4j")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_p1kkb")
+rotation = 1.5708
+texture = ExtResource("2_rxf4j")
+flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, -2.5)
+position = Vector2(0.458541, -3.44882)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_rxf4j")
