@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://ild26gk6jakr"]
 
-[ext_resource type="Texture2D" uid="uid://dn1o1asep8uim" path="res://Assets/Backgrounds/Level1/toasy background 2.2.png" id="1_0xm2m"]
 [ext_resource type="Script" uid="uid://jo26thdef4lk" path="res://main.gd" id="1_h2yge"]
 [ext_resource type="PackedScene" uid="uid://dwswaaopggu0m" path="res://Toasty/toasty.tscn" id="1_ig7tw"]
+[ext_resource type="Texture2D" uid="uid://2si2ae8w4fw5" path="res://Assets/Backgrounds/level3/toastylevel3.png" id="2_lquwl"]
 [ext_resource type="PackedScene" uid="uid://fyqal2wqh568" path="res://UI/ScoreBoard/score_board.tscn" id="4_1bvp3"]
 [ext_resource type="Texture2D" uid="uid://cuvkebl5d2f0l" path="res://Assets/UI/Icon_Small_Blank_Pause.png" id="5_lquwl"]
 
@@ -17,13 +17,13 @@ script = ExtResource("1_h2yge")
 
 [node name="Parallax2D" type="Parallax2D" parent="."]
 scroll_scale = Vector2(0.5, 1)
-repeat_size = Vector2(1535.92, 0)
-autoscroll = Vector2(-55, 0)
-repeat_times = 2
+repeat_size = Vector2(4512.02, 0)
+autoscroll = Vector2(-48.76, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D"]
-position = Vector2(1867, 326)
-texture = ExtResource("1_0xm2m")
+position = Vector2(2607, 59)
+scale = Vector2(0.970052, 1.31901)
+texture = ExtResource("2_lquwl")
 
 [node name="Toasty" parent="." instance=ExtResource("1_ig7tw")]
 position = Vector2(89, 225)
